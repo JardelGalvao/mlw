@@ -1,1 +1,50 @@
-<p>new-item-page works!</p>
+<form>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name">
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+    
+    <select class="form-select mb-3" aria-label="Default select example">
+        <option selected>Categorie</option>
+        <option value="1">Finances</option>
+        <option value="2">Others</option>
+    </select>
+
+    <select class="form-select mb-3" aria-label="Default select example">
+        <option selected>Sub Categories</option>
+        <option value="1">Variables</option>
+        <option value="2">Fixed</option>
+    </select>
+
+    <div class="mb-3">
+        <label for="creationDate" class="form-label">Creation Date</label>
+        <input type="datetime-local" class="form-control" id="creationDate" >
+    </div>
+
+    <div class="mb-3">
+        <label for="estimatedDate" class="form-label">Estimated Date</label>
+        <input type="datetime-local" class="form-control" id="estimatedDate">
+    </div>
+
+    <div class="mb-3">
+        <label for="dueDate" class="form-label">Due Date</label>
+        <input type="datetime-local" class="form-control" id="dueDate">
+    </div>
+
+    <div class="mb-3">
+        <label for="updateDate" class="form-label">Update Date</label>
+        <input type="datetime-local" class="form-control" id="updateDate">
+    </div>
+
+    <div class="mb-3">
+        <label for="value" class="form-label">Description</label>
+        <input type="number" class="form-control" id="value">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
