@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
- 
+ :root {
+    --clr-primary: #45C4B0;
+    --clr-secondary: #13678A;
+    --clr-tertiary: #012030;
+    --clr-neutral:  #F8F8FF;
+ }
 
 html{
     margin: 30px 100px 30px 100px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* MY STYLES */
+
+body {
+    background: var(--clr-neutral)
 }

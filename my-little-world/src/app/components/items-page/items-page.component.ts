@@ -9,6 +9,7 @@ import { Items } from '../../types';
 })
 export class ItemsPageComponent {
   items: Items[] = [];
+  displayColumns: string[] = ['Name', 'Categorie', 'Sub Categorie', 'Creation Date', 'Estimated Date', 'Due Date', 'Value'];
   
   constructor(
     private ItemsService: ItemService,

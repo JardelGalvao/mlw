@@ -25,8 +25,8 @@ export interface SubCategories {
 export interface Items {
     id: number,
     user_id: number,
-    categorie_id: number,
-    sub_categorie_id: number,
+    id_category: number,
+    id_sub_category: number,
     name: string,
     description: string,
     creation_date: Date,

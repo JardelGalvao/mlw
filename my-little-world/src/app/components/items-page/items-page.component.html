@@ -1,1 +1,43 @@
-<p>items-page works!</p>
+<!-- items-page.component.html -->
+<mat-table [dataSource]="items">
+    <!-- Define columns -->
+    <ng-container matColumnDef="Name" >
+        <mat-header-cell *matHeaderCellDef > Name </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Categorie">
+        <mat-header-cell *matHeaderCellDef> Categorie </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].id_category }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Sub Categorie">
+        <mat-header-cell *matHeaderCellDef> Sub Categorie </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].id_sub_category }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Creation Date">
+        <mat-header-cell *matHeaderCellDef> Creation Date </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].creation_date }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Estimated Date">
+        <mat-header-cell *matHeaderCellDef> Estimated Date </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].estimated_date }} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="Due Date">
+        <mat-header-cell *matHeaderCellDef> Due Date </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].due_date }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Value">
+        <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+        <mat-cell *matCellDef="let i = index" class="bg-primary"> {{ items[i].value }} </mat-cell>
+    </ng-container>
+  
+    <!-- Assign columns to display -->
+    <mat-header-row *matHeaderRowDef="displayColumns" class="bg-tertiary"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+  </mat-table>
+  
