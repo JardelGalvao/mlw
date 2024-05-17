@@ -16,6 +16,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()
