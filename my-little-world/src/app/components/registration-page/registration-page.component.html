@@ -1,4 +1,5 @@
-<mat-card class="registration-box">
+<form class="form-registration" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card class="registration-box">
         <mat-card-content>
             <mat-form-field>
                 <mat-label>First Name</mat-label>
@@ -24,4 +25,5 @@
                 <button mat-raised-button>Register</button>
             </div>
         </mat-card-content>
-</mat-card>
+    </mat-card>
+</form>

@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Items, Categories, SubCategories } from '../types';
+import { Items, Categories, SubCategories, Users } from '../types';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type' : 'application/json',
+  })
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +29,12 @@ export class ItemService {
 
   getSubCategories(userId: number, categorieId: number): Observable<SubCategories[]>{
     return this.http.get<SubCategories[]>(`/api/${userId}/${categorieId}/sub-categories`)
+  }
+
+  createUser(first_name: string, last_name: string, email: string, username: string, password: string): Observable<Users>{
+    return this.http.post<Users>(
+      '/api/users',
+      {first_name, last_name, email, username, password}
+    )
   }
 }

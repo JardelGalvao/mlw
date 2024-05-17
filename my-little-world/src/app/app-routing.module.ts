@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'items', component: ItemsPageComponent, pathMatch: 'full' },
   { path: 'items/:id', component: EditItemPageComponent, pathMatch: 'full' },
   { path: 'new-item', component: NewItemPageComponent, pathMatch: 'full' },
-  { path: 'registration-page', component: RegistrationPageComponent, pathMatch: 'full' },
+  { path: 'registration', component: RegistrationPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
