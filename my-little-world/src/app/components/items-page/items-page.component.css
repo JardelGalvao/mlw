@@ -1,6 +1,0 @@
-
-mat-cell{
-    background-color: var(--clr-neutral);
-    color: var(--clr-tertiary);
-    border: solid (0px, 1px, 1px, 1px) var(--clr-tertiary);
-}

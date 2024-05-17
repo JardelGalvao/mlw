@@ -4,6 +4,7 @@
     --clr-secondary: #13678A;
     --clr-tertiary: #012030;
     --clr-neutral:  #F8F8FF;
+    --clr-green: #DAFBDA;   
  }
 
 html{
@@ -11,17 +12,30 @@ html{
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: var(--clr-neutral);}
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 
 /* MY STYLES */
 
-body {
-    background: var(--clr-neutral)
+mat-table.primary-table{
+    background-color: var(--clr-neutral);
+    border: none;
+}
+
+mat-table.primary-table mat-header-cell.primary-header-cell{
+    background-color: var(--clr-tertiary);
+    border: none;
+}
+
+mat-cell.primary-cell{
+    color: var(--clr-tertiary);
+    border: solid 1px var(--clr-tertiary);
 }
