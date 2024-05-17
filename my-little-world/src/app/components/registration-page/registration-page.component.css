@@ -1,0 +1,34 @@
+mat-card.registration-box{
+    width: 400px;
+    height: 550px;
+    background: var(--clr-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+mat-card.registration-box mat-card-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-primary);
+    
+}
+
+div.example-button-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+}
+
+div.example-button-row button {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #7c2eb2, #3666d0);
+}

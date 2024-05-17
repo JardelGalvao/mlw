@@ -20,13 +20,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsPageComponent,
     EditItemPageComponent,
-    NewItemPageComponent
+    NewItemPageComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import {FormsModule} from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()
