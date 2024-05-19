@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { MatCardModule } from '@angular/material/card';
 
@@ -43,9 +43,7 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     FormsModule,
     MatCardModule,
-    FormBuilder,
-    FormGroup,
-    Validators
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()

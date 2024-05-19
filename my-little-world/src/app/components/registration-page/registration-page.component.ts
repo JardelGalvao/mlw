@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,14 +9,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class RegistrationPageComponent {
-  form: FormGroup;
+  form!: FormGroup;
   
-  constructor(private fb: FormBuilder){
-    this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
-    });
+  constructor(){
+  }
+
+  ngOnInit():void {
+    this.form = new FormGroup({
+      first_name : new FormControl(''),
+      last_name : new FormControl(''),
+      email : new FormControl(''),
+      username : new FormControl(''),
+      password : new FormControl(''),   })
   }
 
   onSubmit(): void {
