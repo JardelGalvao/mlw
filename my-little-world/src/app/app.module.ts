@@ -22,6 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { MatCardModule } from '@angular/material/card';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MatCardModule } from '@angular/material/card';
     ItemsPageComponent,
     EditItemPageComponent,
     NewItemPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

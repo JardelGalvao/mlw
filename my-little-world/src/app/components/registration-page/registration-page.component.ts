@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 
 export class RegistrationPageComponent {
   registrationForm!: FormGroup;
+  error!: string;
 
   
   constructor(
@@ -34,15 +35,20 @@ export class RegistrationPageComponent {
 
 
   onSubmit(): void {
-      if (this.registrationForm.valid){
-        const formData = this.registrationForm.value
-        this.ItemService.createUser(formData.first_name, formData.last_name, formData.email, formData.username, formData.password)
-        .subscribe(() => {
-          this.router.navigateByUrl('/items')
-        });
-      }else{
-        console.log('Form error');
-      }
-    
-  }  
+    if (this.registrationForm.valid) {
+      const formData = this.registrationForm.value;
+      this.ItemService.createUser(formData.first_name, formData.last_name, formData.email, formData.username, formData.password)
+        .subscribe(
+          (response) => {
+            this.router.navigateByUrl('/items');
+          },
+          (error) => {
+            this.error = error.error.message;
+          }
+        );
+    } else {
+      console.log('Form error');
+    }
+  } 
+  
 }

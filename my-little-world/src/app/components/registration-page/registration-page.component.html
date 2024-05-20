@@ -48,6 +48,9 @@
                 <span *ngIf="registrationForm.controls['password']?.errors?.['pattern']" class="inputValidationError">Password must be at least 8 characters long, contain at least one number, one uppercase letter, and one lowercase letter</span>
             </mat-hint>
         </mat-form-field>
+        <mat-hint *ngIf="error">
+          <span class="inputValidationError">{{ error }}</span>
+        </mat-hint>
         <div class="example-button-row">
             <button mat-raised-button type="submit">Register</button>
         </div>
