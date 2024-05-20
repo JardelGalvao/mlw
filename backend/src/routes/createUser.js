@@ -5,18 +5,28 @@ export const createUserRoute = {
     method: 'POST',
     path: '/api/users',
     handler: async (req, h) => {
-        const id = uuid();
-        const {first_name = '', last_name = '', email = '' , username = '', password = '' } = req.payload;
-        await db.query(
-            `INSERT INTO USERS
-                VALUES (?, ?, ?, ?, ?, ?)`
-            ,[id, first_name, last_name, email, username, password]
-        );
+        try {
+            const id = uuid();
+            const {first_name = '', last_name = '', email = '' , username = '', password = '' } = req.payload;
+            await db.query(
+                `INSERT INTO USERS
+                    VALUES (?, ?, ?, ?, ?, ?)`
+                ,[id, first_name, last_name, email, username, password]
+            );
+    
+            const result = {
+                "id" : id,
+                "first_name" : first_name,
+                "last_name" : last_name,
+                "email" : email,
+                "username" : username
+            }
+            
+            return result
+        }
+        catch(e){
+            throw new Boom(e);
+        }
 
-        const { result } = db.query(
-            `SELECT FIRST_NAME, LAST_NAME, EMAIL, USERNAME FROM USERS WHERE ID = ?`
-            ,[id]
-        );
-        return result
     }
 }

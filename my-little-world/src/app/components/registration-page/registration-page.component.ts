@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { StrongPasswordRegx } from '../../StrongPasswordRegx';
+import { ItemService } from '../../services/item.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,27 +12,37 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 
 export class RegistrationPageComponent {
-  form!: FormGroup;
+  registrationForm!: FormGroup;
+
   
-  constructor(){
+  constructor(
+      private fb: FormBuilder,
+      private ItemService: ItemService,
+      private router: Router,
+    ){
+    this.registrationForm = this.fb.group({
+      first_name : new FormControl('', [Validators.required]),
+      last_name : new FormControl('', [Validators.required]),
+      email : new FormControl('', [Validators.required, Validators.email]),
+      username : new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password : new FormControl('', [Validators.required, Validators.pattern(StrongPasswordRegx)]),
+    });
   }
 
   ngOnInit():void {
-    this.form = new FormGroup({
-      first_name : new FormControl(''),
-      last_name : new FormControl(''),
-      email : new FormControl(''),
-      username : new FormControl(''),
-      password : new FormControl(''),   })
   }
 
-  onSubmit(): void {
-    if (this.form.valid) {
-      console.log('Form Submitted!', this.form.value);
-      // Here, you can also send the form data to a backend server
-    } else {
-      console.log('Form is invalid');
-    }
 
+  onSubmit(): void {
+      if (this.registrationForm.valid){
+        const formData = this.registrationForm.value
+        this.ItemService.createUser(formData.first_name, formData.last_name, formData.email, formData.username, formData.password)
+        .subscribe(() => {
+          this.router.navigateByUrl('/items')
+        });
+      }else{
+        console.log('Form error');
+      }
+    
   }  
 }

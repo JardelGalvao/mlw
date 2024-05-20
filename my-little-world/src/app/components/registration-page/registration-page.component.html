@@ -1,29 +1,57 @@
-<form class="form-registration" [formGroup]="form" (ngSubmit)="onSubmit()" #formDir="ngForm">
+<form class="form-registration" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <mat-card class="registration-box">
-        <mat-card-content>
-            <mat-form-field>
-                <mat-label>First Name</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Last Name</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <mat-form-field class="teste">
-                <mat-label>E-mail</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Username</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput required>
-            </mat-form-field>
-            <div class="example-button-row">
-                <button mat-raised-button type="submit">Register</button>
-            </div>
-        </mat-card-content>
+      <mat-card-content>
+        <!-- First Name -->
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="first_name">
+          <mat-hint *ngIf="registrationForm.controls['first_name']?.invalid && registrationForm.controls['first_name']?.touched">
+            <span *ngIf="registrationForm.controls['first_name']?.errors?.['required']" class="inputValidationError">First Name is required</span>
+          </mat-hint>
+        </mat-form-field>
+  
+        <!-- Last Name -->
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="last_name">
+          <mat-hint *ngIf="registrationForm.controls['last_name']?.invalid && registrationForm.controls['last_name']?.touched">
+            <span *ngIf="registrationForm.controls['last_name']?.errors?.['required']" class="inputValidationError">Last Name is required</span>
+          </mat-hint>
+        </mat-form-field>
+  
+        <!-- E-mail -->
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email">
+          <mat-hint *ngIf="registrationForm.controls['email']?.invalid && registrationForm.controls['email']?.touched">
+            <span *ngIf="registrationForm.controls['email']?.errors?.['required']" class="inputValidationError">E-mail is required</span>
+            <span *ngIf="registrationForm.controls['email']?.errors?.['email']" class="inputValidationError">Invalid email format</span>
+          </mat-hint>
+        </mat-form-field>
+  
+        <!-- Username -->
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+          <mat-hint *ngIf="registrationForm.controls['username']?.invalid && registrationForm.controls['username']?.touched">
+            <span *ngIf="registrationForm.controls['username']?.errors?.['required']" class="inputValidationError">Username is required</span>
+            <span *ngIf="registrationForm.controls['username']?.errors?.['minlength']" class="inputValidationError">The min username length is 8</span>
+          </mat-hint>
+        </mat-form-field>
+  
+        <!-- Password -->
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password">
+            <mat-hint *ngIf="registrationForm.controls['password']?.invalid && registrationForm.controls['password']?.touched">
+                <span *ngIf="registrationForm.controls['password']?.errors?.['required']" class="inputValidationError">Password is required</span>
+                <span *ngIf="registrationForm.controls['password']?.errors?.['pattern']" class="inputValidationError">Password must be at least 8 characters long, contain at least one number, one uppercase letter, and one lowercase letter</span>
+            </mat-hint>
+        </mat-form-field>
+        <div class="example-button-row">
+            <button mat-raised-button type="submit">Register</button>
+        </div>
+      </mat-card-content>
     </mat-card>
 </form>
+  

@@ -12,7 +12,7 @@ html{
     margin: 30px 100px 30px 100px;
 }
 
-html, body { height: 100%; }
+html, body { height: 100%; width: ;}
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
