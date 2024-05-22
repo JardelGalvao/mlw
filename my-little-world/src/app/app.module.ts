@@ -23,6 +23,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { MatCardModule } from '@angular/material/card';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     MatFormFieldModule,
     FormsModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   providers: [
     provideAnimationsAsync()

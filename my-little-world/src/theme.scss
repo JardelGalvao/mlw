@@ -1,0 +1,60 @@
+@use '@angular/material' as mat;
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+$custom-primary-palette: (
+    100: #dcdeff,
+    200: #a8acf5,
+    300: #8b8fdd,
+    400: #686dc5,
+    500: #464b9e,
+    600: #333881,
+    700: #222666,
+    800: #191d55,
+    900: #10144D,
+    contrast: (
+        100: #2a3632,
+        200: #33D49D,
+        300: #33D49D,
+        400: #33D49D,
+        500: #33D49D,
+        600: #33D49D,
+        700: #33D49D,
+        800: #33D49D,
+        900: #33D49D
+    ),
+);
+
+$custom-accent-palette: (
+    100: #b9f6ca,
+    200: #69f0ae,
+    400: #00e676,
+    700: #00c853,
+    contrast: (
+        100: #333881,
+        200: #222666,
+        400: #191d55,
+        700: #10144D,
+    ),
+);
+
+
+
+$custom-primary: mat.define-palette($custom-primary-palette, 900);
+$custom-accent: mat.define-palette($custom-accent-palette, 400);
+$custom-warn: mat.define-palette(mat.$red-palette);
+
+$custom-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $custom-primary,
+            accent: $custom-accent,
+            warn: $custom-warn,
+        ),
+    )
+);
+
+@include mat.all-component-themes($custom-theme);

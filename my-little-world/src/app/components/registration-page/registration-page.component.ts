@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StrongPasswordRegx } from '../../StrongPasswordRegx';
-import { ItemService } from '../../services/item.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 
@@ -18,7 +18,7 @@ export class RegistrationPageComponent {
   
   constructor(
       private fb: FormBuilder,
-      private ItemService: ItemService,
+      private AuthService: AuthService,
       private router: Router,
     ){
     this.registrationForm = this.fb.group({
@@ -37,7 +37,7 @@ export class RegistrationPageComponent {
   onSubmit(): void {
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      this.ItemService.createUser(formData.first_name, formData.last_name, formData.email, formData.username, formData.password)
+      this.AuthService.createUser(formData.first_name, formData.last_name, formData.email, formData.username, formData.password)
         .subscribe(
           (response) => {
             this.router.navigateByUrl('/items');

@@ -9,7 +9,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password">
+            <input matInput formControlName="password" type="password">
             <mat-hint *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched">
                 <span *ngIf="loginForm.controls['password']?.errors?.['required']" class="inputValidationError">Password is required</span>
             </mat-hint>

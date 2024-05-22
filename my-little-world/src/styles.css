@@ -1,23 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
  :root {
-    --clr-primary:  linear-gradient(to right, #64d1b8, #64d1b8);
-    --clr-secondary: linear-gradient(to right, #7c2eb2, #3666d0);
-    --clr-tertiary: radial-gradient(circle, #64d1b8, #3b6042);
-    --clr-neutral:  #F8F8FF;
-    --clr-green: #DAFBDA;  
-    --gradient5: linear-gradient(to right, #64d1b8, #3666d0, #7c2eb2);
+    --clr-primary:  #33D49D;
+    --clr-secondary: #080f1b;
+    --clr-tertiary: #0F8DEB;
+    --clr-neutral:  #a5a5aa;
  }
 
 html{
     margin: 30px 100px 30px 100px;
 }
 
-html, body { height: 100%; width: ;}
+html, body { height: 100% }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background: rgb(--clr-neutral);
-
+    background: var(--clr-secondary);
 }
 
 *,
@@ -26,22 +23,4 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-
-/* MY STYLES */
-
-mat-table.primary-table{
-    background-color: var(--clr-neutral);
-    border: none;
-}
-
-mat-table.primary-table mat-header-cell.primary-header-cell{
-    background-color: var(--clr-tertiary);
-    border: none;
-}
-
-mat-cell.primary-cell{
-    color: var(--clr-tertiary);
-    border: solid 1px var(--clr-tertiary);
 }

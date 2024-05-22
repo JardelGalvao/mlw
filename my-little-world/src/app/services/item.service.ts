@@ -31,10 +31,4 @@ export class ItemService {
     return this.http.get<SubCategories[]>(`/api/${userId}/${categorieId}/sub-categories`)
   }
 
-  createUser(first_name: string, last_name: string, email: string, username: string, password: string): Observable<Users>{
-    return this.http.post<Users>(
-      '/api/users',
-      {first_name, last_name, email, username, password}
-    )
-  }
 }

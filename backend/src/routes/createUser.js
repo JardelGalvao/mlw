@@ -1,6 +1,8 @@
 import { db } from '../database';
 import { v4 as uuid } from 'uuid';
 import Boom from '@hapi/boom';
+import bcrypt from 'bcrypt';
+
 
 export const createUserRoute = {
     method: 'POST',
@@ -10,11 +12,13 @@ export const createUserRoute = {
             const id = uuid();
             const { first_name = '', last_name = '', email = '', username = '', password = '' } = req.payload;
             
-            // Attempt to insert the user into the database
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+
             await db.query(
                 `INSERT INTO USERS
                     VALUES (?, ?, ?, ?, ?, ?)`
-                , [id, first_name, last_name, email, username, password]
+                , [id, first_name, last_name, email, username, hashedPassword]
             );
 
             const result = {
@@ -27,17 +31,12 @@ export const createUserRoute = {
 
             return result;
         } catch (e) {
-            // Check if the error is due to a unique constraint violation
-            console.log(e);
             if (e.code === 'ER_DUP_ENTRY' && e.sqlMessage.includes('username')) {
-                console.log(e);
                 throw Boom.conflict('Username already exists');
             } else if (e.code === 'ER_DUP_ENTRY' && e.sqlMessage.includes('email')) {
-                console.log(e);
                 throw Boom.conflict('Email already exists');
             } else {
-                // If it's another error, throw a generic internal server error
-                console.log(e);
+                console.log(e)
                 throw Boom.badImplementation('Error creating user');
             }
         }

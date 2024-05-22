@@ -1,10 +1,11 @@
 <form class="form-registration" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <h1>Registration</h1>
     <mat-card class="registration-box">
       <mat-card-content>
         <!-- First Name -->
         <mat-form-field>
           <mat-label>First Name</mat-label>
-          <input matInput formControlName="first_name">
+          <input matInput formControlName="first_name" class="teste">
           <mat-hint *ngIf="registrationForm.controls['first_name']?.invalid && registrationForm.controls['first_name']?.touched">
             <span *ngIf="registrationForm.controls['first_name']?.errors?.['required']" class="inputValidationError">First Name is required</span>
           </mat-hint>
@@ -47,12 +48,12 @@
                 <span *ngIf="registrationForm.controls['password']?.errors?.['required']" class="inputValidationError">Password is required</span>
                 <span *ngIf="registrationForm.controls['password']?.errors?.['pattern']" class="inputValidationError">Password must be at least 8 characters long, contain at least one number, one uppercase letter, and one lowercase letter</span>
             </mat-hint>
+            <mat-hint *ngIf="error">
+              <span class="inputValidationError">{{ error }}</span>
+            </mat-hint>
         </mat-form-field>
-        <mat-hint *ngIf="error">
-          <span class="inputValidationError">{{ error }}</span>
-        </mat-hint>
         <div class="example-button-row">
-            <button mat-raised-button type="submit">Register</button>
+            <button mat-raised-button type="submit" color="primary">Register</button>
         </div>
       </mat-card-content>
     </mat-card>

@@ -1,50 +1,63 @@
-<form>
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name">
-    </div>
+<form class="new-item">
+    <mat-card class="new-item-box">
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput>
+            </mat-form-field>
 
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3"></textarea>
-    </div>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
     
-    <select class="form-select mb-3" aria-label="Default select example">
-        <option selected>Categorie</option>
-        <option value="1">Finances</option>
-        <option value="2">Others</option>
-    </select>
-
-    <select class="form-select mb-3" aria-label="Default select example">
-        <option selected>Sub Categories</option>
-        <option value="1">Variables</option>
-        <option value="2">Fixed</option>
-    </select>
-
-    <div class="mb-3">
-        <label for="creationDate" class="form-label">Creation Date</label>
-        <input type="datetime-local" class="form-control" id="creationDate" >
-    </div>
-
-    <div class="mb-3">
-        <label for="estimatedDate" class="form-label">Estimated Date</label>
-        <input type="datetime-local" class="form-control" id="estimatedDate">
-    </div>
-
-    <div class="mb-3">
-        <label for="dueDate" class="form-label">Due Date</label>
-        <input type="datetime-local" class="form-control" id="dueDate">
-    </div>
-
-    <div class="mb-3">
-        <label for="updateDate" class="form-label">Update Date</label>
-        <input type="datetime-local" class="form-control" id="updateDate">
-    </div>
-
-    <div class="mb-3">
-        <label for="value" class="form-label">Description</label>
-        <input type="number" class="form-control" id="value">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Sub Category</mat-label>
+                <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Creation date</mat-label>
+                <input matInput [matDatepicker]="creation_date" disabled>
+                <mat-datepicker-toggle matIconSuffix [for]="creation_date"></mat-datepicker-toggle>
+                <mat-datepicker #creation_date></mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Estimated Date</mat-label>
+                <input matInput [matDatepicker]="estimated_date">
+                <mat-datepicker-toggle matIconSuffix [for]="estimated_date"></mat-datepicker-toggle>
+                <mat-datepicker #estimated_date></mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="due_date">
+                <mat-datepicker-toggle matIconSuffix [for]="due_date"></mat-datepicker-toggle>
+                <mat-datepicker #due_date></mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Update Date</mat-label>
+                <input matInput [matDatepicker]="update_date" disabled>
+                <mat-datepicker-toggle matIconSuffix [for]="update_date"></mat-datepicker-toggle>
+                <mat-datepicker #update_date></mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field floatLabel="always">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" class="example-right-align" placeholder="0">
+                <span matTextPrefix>R$&nbsp;</span>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+</form>
