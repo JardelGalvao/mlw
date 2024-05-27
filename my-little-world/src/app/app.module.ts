@@ -23,7 +23,14 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { MatCardModule } from '@angular/material/card';
 import { LoginPageComponent } from './components/login-page/login-page.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { NewCategoryPageComponent } from './components/new-category-page/new-category-page.component';
 
 
 @NgModule({
@@ -33,7 +40,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     EditItemPageComponent,
     NewItemPageComponent,
     RegistrationPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SideNavComponent,
+    CategoriesComponent,
+    NewCategoryPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormsModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSidenavModule,
+    MatListModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync()

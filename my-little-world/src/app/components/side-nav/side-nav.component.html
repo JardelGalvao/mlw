@@ -1,0 +1,31 @@
+<div class="sidenav"  [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" (click)="collapsed ? closeSidenav() : toggleCollapse()">
+            <a class="sidenav-nav-link">
+                <mat-icon class="sidenav-link-icon">public</mat-icon>
+                <span *ngIf="collapsed" class="sidenav-link-text app-name">MY LITTLE WORLD</span>
+            </a>
+        </li>
+
+        <li  [ngClass]="itemSelected === 1 ? 'active sidenav-nav-item' : 'sidenav-nav-item'" (click)="selectItem(1)"  routerLink="/items">
+            <a class="sidenav-nav-link">
+                <mat-icon class="sidenav-link-icon">dashboard</mat-icon>
+                <span *ngIf="collapsed" class="sidenav-link-text">DASHBOARD</span>
+            </a>
+        </li>
+
+        <li [ngClass]="itemSelected === 2 ? 'active sidenav-nav-item' : 'sidenav-nav-item'" (click)="selectItem(2)" routerLink="/categories">
+            <a  class="sidenav-nav-link">
+                <mat-icon class="sidenav-link-icon">fullscreen</mat-icon>
+                <span *ngIf="collapsed" class="sidenav-link-text">CATEGORIES</span>
+            </a>
+        </li>
+
+        <li [ngClass]="itemSelected === 3 ? 'active sidenav-nav-item' : 'sidenav-nav-item'" (click)="selectItem(3)" routerLink="/new-item">
+            <a  class="sidenav-nav-link">
+                <mat-icon class="sidenav-link-icon">fullscreen_exit</mat-icon>
+                <span *ngIf="collapsed" class="sidenav-link-text">SUB CATEGORIES</span>
+            </a>
+        </li>
+    </ul>
+</div>

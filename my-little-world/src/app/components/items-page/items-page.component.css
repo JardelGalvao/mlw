@@ -1,0 +1,11 @@
+.body{
+    height: 80%;
+    width: 80%;
+    margin:  auto auto;
+
+}
+
+th.header-cell{
+    background: var(--clr-primary);
+}
+

@@ -1,11 +1,11 @@
-<form class="form-registration" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-  <h1>Registration</h1>
-    <mat-card class="registration-box">
-      <mat-card-content>
-        <!-- First Name -->
+<div class="body">
+  <div class="content-box">
+    <h1>Registration</h1>
+    <form class="form-registration" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+       <!-- First Name -->
         <mat-form-field>
           <mat-label>First Name</mat-label>
-          <input matInput formControlName="first_name" class="teste">
+          <input matInput formControlName="first_name">
           <mat-hint *ngIf="registrationForm.controls['first_name']?.invalid && registrationForm.controls['first_name']?.touched">
             <span *ngIf="registrationForm.controls['first_name']?.errors?.['required']" class="inputValidationError">First Name is required</span>
           </mat-hint>
@@ -52,10 +52,9 @@
               <span class="inputValidationError">{{ error }}</span>
             </mat-hint>
         </mat-form-field>
-        <div class="example-button-row">
+        <div class="button-row">
             <button mat-raised-button type="submit" color="primary">Register</button>
         </div>
-      </mat-card-content>
-    </mat-card>
-</form>
-  
+    </form>
+  </div>
+</div>

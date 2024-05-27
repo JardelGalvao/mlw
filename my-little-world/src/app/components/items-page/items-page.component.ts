@@ -16,17 +16,17 @@ export class ItemsPageComponent {
   subCategories: SubCategories[] = [];
   
   constructor(
-    private ItemsService: ItemService,
+    private ItemService: ItemService,
     private route: ActivatedRoute,
   ){}
   
   ngOnInit(): void {
     const userId = this.route.snapshot.paramMap.get('userId')
-    this.ItemsService.getItems()
+    this.ItemService.getItems()
       .subscribe(items => this.items = items);
-    this.ItemsService.getCategories(1)
+    this.ItemService.getCategories()
       .subscribe(categories => this.categories = categories);
-    this.ItemsService.getSubCategories(1,1)
+    this.ItemService.getSubCategories(1,1)
       .subscribe(subCategories => this.subCategories = subCategories);
   }
 

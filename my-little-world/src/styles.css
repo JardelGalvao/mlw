@@ -3,12 +3,8 @@
     --clr-primary:  #33D49D;
     --clr-secondary: #080f1b;
     --clr-tertiary: #0F8DEB;
-    --clr-neutral:  #a5a5aa;
+    --clr-neutral:  #f7f7f7;
  }
-
-html{
-    margin: 30px 100px 30px 100px;
-}
 
 html, body { height: 100% }
 body { 

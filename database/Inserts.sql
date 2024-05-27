@@ -6,7 +6,7 @@ INSERT INTO USERS
 INSERT INTO CATEGORIES
 	VALUES
 		(1, 1, 'FINANCES', 'For my finances'),
-        (1, 2, 'HOUSE', 'Hor house organization');
+        (1, 2, 'HOUSE', 'For house organization');
     
 INSERT INTO SUB_CATEGORIES
 	VALUES

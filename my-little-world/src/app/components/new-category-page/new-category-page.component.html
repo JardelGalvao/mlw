@@ -1,0 +1,28 @@
+<div class="body">
+    <div class="content-box">
+        <form class="new-category-form"  [formGroup]="newCategoryForm" (ngSubmit)="onSubmit()">
+            <h1>New Category</h1>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput required formControlName="name">
+                <mat-hint *ngIf="newCategoryForm.controls['name']?.invalid && newCategoryForm.controls['name']?.touched">
+                    <span *ngIf="newCategoryForm.controls['name']?.errors?.['required']" class="inputValidationError">Name is required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput
+                            formControlName="description"
+                          cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="5"
+                          cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+            <div class="button-row">
+                <button mat-raised-button type="submit" color="primary">Save</button>
+                <button mat-raised-button type="button" color="warn" routerLink="/categories">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

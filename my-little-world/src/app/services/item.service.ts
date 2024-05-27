@@ -23,12 +23,26 @@ export class ItemService {
     return this.http.get<Items[]>('/api/items')
   }
 
-  getCategories(userId: number): Observable<Categories[]>{
-    return this.http.get<Categories[]>(`/api/${userId}/categories`)
+  getCategories(): Observable<Categories[]>{
+    return this.http.get<Categories[]>(`/api/categories`)
   }
 
   getSubCategories(userId: number, categorieId: number): Observable<SubCategories[]>{
     return this.http.get<SubCategories[]>(`/api/${userId}/${categorieId}/sub-categories`)
+  }
+
+  createCategory(name: string, description: string): Observable<Categories>{
+    return this.http.post<Categories>(
+      '/api/categories',
+      {name, description}
+    )
+  }
+
+  deleteCategory(id: number): Observable<Categories>{
+    return new Observable<any>(observer => {
+      this.http.delete<Categories>(`/api/categories/${id}`, httpOptions)
+      .subscribe(() => observer.next());
+    });
   }
 
 }

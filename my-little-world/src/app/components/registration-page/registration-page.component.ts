@@ -16,6 +16,7 @@ export class RegistrationPageComponent {
   error!: string;
 
   
+  
   constructor(
       private fb: FormBuilder,
       private AuthService: AuthService,
