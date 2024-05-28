@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ItemService } from '../../services/item.service';
+import { mlwService } from '../../services/mlw.service';
 import { Router } from '@angular/router';
 
 
@@ -15,7 +15,7 @@ export class NewCategoryPageComponent {
 
   constructor( 
     private fb: FormBuilder,
-    private ItemService: ItemService,
+    private mlwService: mlwService,
     private router: Router,
   ){
     this.newCategoryForm = this.fb.group({
@@ -27,8 +27,7 @@ export class NewCategoryPageComponent {
   onSubmit(){
     if(this.newCategoryForm.valid){
       const formData = this.newCategoryForm.value;
-      console.log(formData.description)
-      this.ItemService.createCategory(formData.name, formData.description)
+      this.mlwService.createCategory(formData.name, formData.description)
         .subscribe(
           (response) => {
             this.router.navigateByUrl('/categories');

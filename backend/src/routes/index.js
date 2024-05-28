@@ -5,6 +5,9 @@ import { createUserRoute } from "./createUser";
 import { loginRoute } from "./login";
 import { createCategoryRoute } from "./createCetegory";
 import { deleteCategoryRoute } from "./deleteCategory"; 
+import { getCategoryRoute } from "./getCategory";
+import { createSubCategoryRoute } from "./createSubCategory";
+import { deleteSubCategoryRoute } from "./deleteSubCategory";
 
 export default [
     getAllItemsRoute,
@@ -14,4 +17,7 @@ export default [
     loginRoute,
     createCategoryRoute,
     deleteCategoryRoute,
+    getCategoryRoute,
+    createSubCategoryRoute,
+    deleteSubCategoryRoute,
 ];

@@ -21,7 +21,7 @@
             </a>
         </li>
 
-        <li [ngClass]="itemSelected === 3 ? 'active sidenav-nav-item' : 'sidenav-nav-item'" (click)="selectItem(3)" routerLink="/new-item">
+        <li [ngClass]="itemSelected === 3 ? 'active sidenav-nav-item' : 'sidenav-nav-item'" (click)="selectItem(3)" routerLink="/sub-categories">
             <a  class="sidenav-nav-link">
                 <mat-icon class="sidenav-link-icon">fullscreen_exit</mat-icon>
                 <span *ngIf="collapsed" class="sidenav-link-text">SUB CATEGORIES</span>

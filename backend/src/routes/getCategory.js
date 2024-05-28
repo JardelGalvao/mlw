@@ -1,14 +1,17 @@
 import { db } from '../database'
 import Boom from '@hapi/boom';
 
-export const getAllSubCategoriesRoute = {
+export const getCategoryRoute = {
     method: 'GET',
-    path: '/api/sub-categories',
+    path: '/api/categories/{id}',
     handler: async (req, h) => {
         try {
+            const id = req.paramms.id;
             const { results } = await db.query(
-                `SELECT * FROM SUB_CATEGORIES`
+                `SELECT * FROM CATEGORIES WHERE ID = ?`,
+                [id]
             )
+            
             return results
         }
         catch(e){

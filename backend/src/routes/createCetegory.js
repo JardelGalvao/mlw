@@ -16,8 +16,7 @@ export const createCategoryRoute = {
             );
             return { userId, name, description};
         }catch (e) {
-            console.log(e)
-                throw Boom.badImplementation('Error creating category');
+            throw Boom.badImplementation('Error creating category');
         }
     }
 }

@@ -5,8 +5,11 @@ import { EditItemPageComponent } from './components/edit-item-page/edit-item-pag
 import { NewItemPageComponent } from './components/new-item-page/new-item-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
-import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
 import { NewCategoryPageComponent } from './components/new-category-page/new-category-page.component';
+import { SubCategoriesPageComponent } from './components/sub-categories-page/sub-categories-page.component';
+import { NewSubCategoryPageComponent } from './components/new-sub-category-page/new-sub-category-page.component';
+import { EditSubCategoryPageComponent } from './components/edit-sub-category-page/edit-sub-category-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/items', pathMatch: 'full' },
@@ -15,8 +18,11 @@ const routes: Routes = [
   { path: 'new-item', component: NewItemPageComponent, pathMatch: 'full' },
   { path: 'registration', component: RegistrationPageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent, pathMatch: 'full' },
-  { path: 'categories', component: CategoriesComponent, pathMatch: 'full' },
+  { path: 'categories', component: CategoriesPageComponent, pathMatch: 'full' },
   { path: 'new-category', component: NewCategoryPageComponent, pathMatch: 'full' },
+  { path: 'sub-categories', component: SubCategoriesPageComponent, pathMatch: 'full' },
+  { path: 'new-sub-category', component: NewSubCategoryPageComponent, pathMatch: 'full' },
+  { path: 'edit-sub-category-page', component: EditSubCategoryPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

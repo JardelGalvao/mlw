@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemService } from '../../services/item.service';
+import { mlwService } from '../../services/mlw.service';
 import { Items, Categories, SubCategories } from '../../types';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,17 +16,16 @@ export class ItemsPageComponent {
   subCategories: SubCategories[] = [];
   
   constructor(
-    private ItemService: ItemService,
+    private mlwService: mlwService,
     private route: ActivatedRoute,
   ){}
   
   ngOnInit(): void {
-    const userId = this.route.snapshot.paramMap.get('userId')
-    this.ItemService.getItems()
+    this.mlwService.getItems()
       .subscribe(items => this.items = items);
-    this.ItemService.getCategories()
+    this.mlwService.getAllCategories()
       .subscribe(categories => this.categories = categories);
-    this.ItemService.getSubCategories(1,1)
+    this.mlwService.getAllSubCategories()
       .subscribe(subCategories => this.subCategories = subCategories);
   }
 

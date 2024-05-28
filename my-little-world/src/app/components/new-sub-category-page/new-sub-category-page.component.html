@@ -1,0 +1,5 @@
+<app-sub-category-data-form 
+    *ngIf="categories"
+    buttonText="Save"
+    (onSubmit)="onSubmit($event)"
+    [currentCategories]="categories"></app-sub-category-data-form>

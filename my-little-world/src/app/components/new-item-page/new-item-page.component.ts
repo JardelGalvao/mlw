@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { Categories, SubCategories } from '../../types';
-import { ItemService } from '../../services/item.service';
+import { mlwService } from '../../services/mlw.service';
 
 
 
@@ -16,13 +16,13 @@ export class NewItemPageComponent {
   categories:  Categories[] = [];
   subCategories: SubCategories[] = [];
   constructor(
-    private ItemService: ItemService
+    private mlwService: mlwService
   ) {}
 
   ngOnInit(): void{
-    this.ItemService.getCategories()
+    this.mlwService.getAllCategories()
       .subscribe(categories => this.categories = categories);
-    this.ItemService.getSubCategories(1, 1)
+    this.mlwService.getAllSubCategories()
       .subscribe(subCategories => this.subCategories = subCategories);
   }
 

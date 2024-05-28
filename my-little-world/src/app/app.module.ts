@@ -29,8 +29,12 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
-import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
 import { NewCategoryPageComponent } from './components/new-category-page/new-category-page.component';
+import { SubCategoriesPageComponent } from './components/sub-categories-page/sub-categories-page.component';
+import { NewSubCategoryPageComponent } from './components/new-sub-category-page/new-sub-category-page.component';
+import { SubCategoryDataFormComponent } from './components/sub-category-data-form/sub-category-data-form.component';
+import { EditSubCategoryPageComponent } from './components/edit-sub-category-page/edit-sub-category-page.component';
 
 
 @NgModule({
@@ -42,8 +46,12 @@ import { NewCategoryPageComponent } from './components/new-category-page/new-cat
     RegistrationPageComponent,
     LoginPageComponent,
     SideNavComponent,
-    CategoriesComponent,
-    NewCategoryPageComponent
+    CategoriesPageComponent,
+    NewCategoryPageComponent,
+    SubCategoriesPageComponent,
+    NewSubCategoryPageComponent,
+    SubCategoryDataFormComponent,
+    EditSubCategoryPageComponent
   ],
   imports: [
     BrowserModule,
