@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { mlwService } from '../../services/mlw.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categories, SubCategories } from '../../types';
 
 @Component({
@@ -16,11 +16,15 @@ export class NewSubCategoryPageComponent {
 
   constructor(
     private mlwService: mlwService,
+    private router: Router,
   ){
   }
 
   onSubmit(SubCategory: SubCategories):void{
-    console.log(SubCategory)
+    this.mlwService.createSubCategory(SubCategory.name, SubCategory.description, SubCategory.category_id)
+      .subscribe(() => {
+        this.router.navigateByUrl('/sub-categories')
+      })
   }
 
   ngOnInit(): void{

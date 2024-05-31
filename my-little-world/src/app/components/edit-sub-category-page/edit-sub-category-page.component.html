@@ -1,1 +1,13 @@
-<app-sub-category-data-form buttonText="Save Changes"></app-sub-category-data-form>
+<div *ngIf="subCategory">
+    <app-sub-category-data-form
+        buttonText="Save Changes"
+        [currentName] = "subCategory.name"
+        [currentDescription] = "subCategory.description"
+        [currentCategoryId] = "subCategory.category_id"
+        [currentCategories] = "categories"
+        (onSubmit) = "onSubmit($event)"
+    ></app-sub-category-data-form>
+</div>
+<div>
+    <h3>Loading....</h3>
+</div>

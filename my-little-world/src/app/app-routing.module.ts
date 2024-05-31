@@ -10,6 +10,7 @@ import { NewCategoryPageComponent } from './components/new-category-page/new-cat
 import { SubCategoriesPageComponent } from './components/sub-categories-page/sub-categories-page.component';
 import { NewSubCategoryPageComponent } from './components/new-sub-category-page/new-sub-category-page.component';
 import { EditSubCategoryPageComponent } from './components/edit-sub-category-page/edit-sub-category-page.component';
+import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/items', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'new-category', component: NewCategoryPageComponent, pathMatch: 'full' },
   { path: 'sub-categories', component: SubCategoriesPageComponent, pathMatch: 'full' },
   { path: 'new-sub-category', component: NewSubCategoryPageComponent, pathMatch: 'full' },
-  { path: 'edit-sub-category-page', component: EditSubCategoryPageComponent, pathMatch: 'full' },
+  { path: 'edit-sub-category/:id', component: EditSubCategoryPageComponent, pathMatch: 'full' },
+  { path: 'edit-category/:id', component: EditCategoryPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

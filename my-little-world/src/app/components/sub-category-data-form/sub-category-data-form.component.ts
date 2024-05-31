@@ -1,8 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Categories, SubCategories} from '../../types';
-import { mlwService } from '../../services/mlw.service';
 
 @Component({
   selector: 'app-sub-category-data-form',
@@ -16,34 +14,26 @@ export class SubCategoryDataFormComponent {
   @Input() currentCategoryId!: number;
   @Input() currentCategories!: Categories[];
 
-  name!: string;
-  description!: string;
-  category_id!: number;
   categories: Categories[] = [];
-
-  newSubCategoryForm!: FormGroup
-  error!: string;
+  newSubCategoryForm!: FormGroup;
   
-
+  @Output() onSubmit = new EventEmitter<SubCategories>();
+  
   constructor(
     private fb: FormBuilder,
-    private mlwService: mlwService,
-    private router: Router,
   ){
     this.newSubCategoryForm  = this.fb.group({
       name: new FormControl('', [Validators.required]),
       description: [''],
-      category: new FormControl('', [Validators.required])
-    })
+      category: new FormControl('', [Validators.required]),
+    });
   }
 
-  @Output() onSubmit = new EventEmitter<SubCategories>();
-
   ngOnInit(): void {
-    this.name = this.currentName;
-    this.description = this.currentDescription;
-    this.category_id = this.currentCategoryId;
     this.categories = this.currentCategories;
+    this.newSubCategoryForm.get('name')?.setValue(this.currentName);
+    this.newSubCategoryForm.get('description')?.setValue(this.currentDescription);
+    this.newSubCategoryForm.get('category')?.setValue(this.currentCategoryId);
   }
 
   onButtonClicked(): void {
@@ -51,14 +41,13 @@ export class SubCategoryDataFormComponent {
       const formData = this.newSubCategoryForm.value;
       this.onSubmit.emit({
         id: 0,
-        uder_id: 1,
-        category_id: formData.category_id,
+        user_id: 1,
+        category_id: formData.category,
         name: formData.name,
         description: formData.description,
-
-      })
+      });
     }else{
-      console.log('Error')
+      console.log('Error');
     }
   }
 

@@ -9,44 +9,47 @@ const httpOptions = {
   })
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class mlwService {
 
+export class mlwService {
   constructor(
     private http: HttpClient,
-  ) { }
+  ){}
 
   getItems(): Observable<Items[]>{
-    return this.http.get<Items[]>('/api/items')
+    return this.http.get<Items[]>('/api/items');
   }
 
   getAllCategories(): Observable<Categories[]>{
-    return this.http.get<Categories[]>(`/api/categories`)
+    return this.http.get<Categories[]>(`/api/categories`);
   }
 
-  getCategory(): Observable<Categories>{
-    return this.http.get<Categories>(`/api/categories/{id}`)
+  getCategory(id: string): Observable<Categories>{
+    return this.http.get<Categories>(`/api/categories/${id}`);
+  }
+
+  getSubCategory(id: string): Observable<SubCategories>{
+    return this.http.get<SubCategories>(`/api/sub-categories/${id}`);
   }
 
   getAllSubCategories(): Observable<SubCategories[]>{
-    return this.http.get<SubCategories[]>(`/api/sub-categories`)
+    return this.http.get<SubCategories[]>(`/api/sub-categories`);
   }
 
   createCategory(name: string, description: string): Observable<Categories>{
     return this.http.post<Categories>(
       '/api/categories',
       {name, description}
-    )
+    );
   }
 
   createSubCategory(name: string, description: string, category_id: number){
     return this.http.post<SubCategories>(
       '/api/sub-categories',
       {name, description, category_id}
-    )
+    );
   }
 
   deleteCategory(id: number): Observable<Categories>{
@@ -56,12 +59,19 @@ export class mlwService {
     });
   }
 
-  
   deleteSubCategory(id: number): Observable<SubCategories>{
     return new Observable<SubCategories>(observer => {
       this.http.delete<SubCategories>(`/api/sub-categories/${id}`, httpOptions)
       .subscribe(() => observer.next());
     });
+  }
+
+  updateSubCategory(id: number, name: string, description: string, category_id: number): Observable<SubCategories>{
+    return this.http.post<SubCategories>(
+      `/api/sub-categories/${id}`,
+      {name, description, category_id},
+      httpOptions,
+    );
   }
 
 }

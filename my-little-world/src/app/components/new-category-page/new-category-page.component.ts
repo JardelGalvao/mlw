@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { mlwService } from '../../services/mlw.service';
 import { Router } from '@angular/router';
+import { Categories } from '../../types';
 
 
 @Component({
@@ -24,23 +25,11 @@ export class NewCategoryPageComponent {
     })
   }
 
-  onSubmit(){
-    if(this.newCategoryForm.valid){
-      const formData = this.newCategoryForm.value;
-      this.mlwService.createCategory(formData.name, formData.description)
-        .subscribe(
-          (response) => {
-            this.router.navigateByUrl('/categories');
-          },
-          (error) => {
-            this.error = error.error.message;
-          }
-        );
-    }
-    else{
-      console.log('Form error');
-    }
+  onSubmit(category: Categories): void{
+    this.mlwService.createCategory(category.name, category.description)
+      .subscribe(() => {
+        this.router.navigateByUrl('/categories')
+      })
   }
-
 
 }

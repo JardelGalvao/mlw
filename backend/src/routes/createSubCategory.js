@@ -15,9 +15,7 @@ export const createSubCategoryRoute = {
             `,
             [name, 1,  description, category_id]
         );
-
         return {"message" : "Sucess"}
-
         }catch(e){
             throw Boom.badImplementation('Error creating Sub Category');
         }

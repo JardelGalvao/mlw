@@ -1,0 +1,12 @@
+<div *ngIf="category">
+    <app-category-data-form
+        buttonText="Save Changes"
+        tittle="Edit Category"
+        [currentName]="category.name"
+        [currentDescription]="category.description"
+        (onSubmit) = "onSubmit($event)"
+    ></app-category-data-form>
+</div>
+<div *ngIf="!category">
+    <h3>Loading....</h3>
+</div>

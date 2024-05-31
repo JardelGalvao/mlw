@@ -16,7 +16,7 @@ export interface Categories {
 
 export interface SubCategories {
     id: number,
-    uder_id: number,
+    user_id: number,
     category_id: number,
     name: string,
     description: string,

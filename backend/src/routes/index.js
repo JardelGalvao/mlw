@@ -8,6 +8,8 @@ import { deleteCategoryRoute } from "./deleteCategory";
 import { getCategoryRoute } from "./getCategory";
 import { createSubCategoryRoute } from "./createSubCategory";
 import { deleteSubCategoryRoute } from "./deleteSubCategory";
+import { getSubCategoryRoute } from "./getSubCategory"; 
+import { updateSubCategoryRouter } from "./updateSubCategory";
 
 export default [
     getAllItemsRoute,
@@ -20,4 +22,6 @@ export default [
     getCategoryRoute,
     createSubCategoryRoute,
     deleteSubCategoryRoute,
+    getSubCategoryRoute,
+    updateSubCategoryRouter,
 ];

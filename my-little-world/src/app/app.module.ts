@@ -35,6 +35,8 @@ import { SubCategoriesPageComponent } from './components/sub-categories-page/sub
 import { NewSubCategoryPageComponent } from './components/new-sub-category-page/new-sub-category-page.component';
 import { SubCategoryDataFormComponent } from './components/sub-category-data-form/sub-category-data-form.component';
 import { EditSubCategoryPageComponent } from './components/edit-sub-category-page/edit-sub-category-page.component';
+import { CategoryDataFormComponent } from './components/category-data-form/category-data-form.component';
+import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { EditSubCategoryPageComponent } from './components/edit-sub-category-pag
     SubCategoriesPageComponent,
     NewSubCategoryPageComponent,
     SubCategoryDataFormComponent,
-    EditSubCategoryPageComponent
+    EditSubCategoryPageComponent,
+    CategoryDataFormComponent,
+    EditCategoryPageComponent
   ],
   imports: [
     BrowserModule,
