@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Categories, SubCategories } from '../../types';
+import { Categories, Items, SubCategories } from '../../types';
 import { mlwService } from '../../services/mlw.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class SubCategoriesPageComponent {
   displayedColumns: string[] = ['Name', 'Description', 'Category', 'Actions'];
   categories:  Categories[] = [];
   subCategories: SubCategories[] = [];
+  items!: Items[];
 
   constructor(
     private mlwService: mlwService,
@@ -28,7 +29,12 @@ export class SubCategoriesPageComponent {
         });
       });
     });
-    
+    this.mlwService.getItems()
+      .subscribe(items => this.items = items);
+  }
+
+  isItemInSubCategories(subCategoryCode: number): boolean {
+    return this.items.some(item => item.sub_category_id === subCategoryCode);
   }
 
   deleteSubCategorie(id: number): void {

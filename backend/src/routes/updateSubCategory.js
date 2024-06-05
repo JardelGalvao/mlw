@@ -1,7 +1,7 @@
 import { db } from "../database";
 import { Boom } from "@hapi/boom";
 
-export const updateSubCategoryRouter = {
+export const updateSubCategoryRoute = {
     method: 'POST',
     path: '/api/sub-categories/{id}',
     handler: async (req, h) => {
@@ -20,7 +20,8 @@ export const updateSubCategoryRouter = {
             );
             return results;
         }catch(e){
-            throw Boom.badImprementation('Error updating Sub Category!')
+        
+            throw Boom.badImplementation('Error updating Sub Category!')
         }
 
     }

@@ -17,9 +17,12 @@ export const deleteCategoryRoute = {
             }
             return result
         }
-        catch(e){
-            console.log(e)
-            throw Boom.badImplementation('Error deleting categegory');
+        catch(err){
+            if(err.code === 'ER_ROW_IS_REFERENCED'){
+                throw Boom.conflict('ER_ROW_IS_REFERENCED');
+            }else{
+                throw Boom.conflict('Error qualquer');
+            }
         }
     }
 }

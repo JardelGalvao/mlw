@@ -1,1 +1,18 @@
-<p>edit-item-page works!</p>
+<div *ngIf="item">
+    <app-item-data-form
+    tittle = "Edit Item"
+    buttonText = "Save Changes"
+    [currentName] = "item.name"
+    [currentDescription] = "item.description"
+    [currentCategory] = "item.category_id"
+    [currentSubCategory] = "item.sub_category_id"
+    [currentCreationDate] = "item.creation_date"
+    [currentEstimatedDate] = "item.estimated_date"
+    [currentDueDate] = "item.due_date"
+    [currentUpdateDate] = "item.update_date"
+    [currentAmount] = "item.value"
+></app-item-data-form>
+</div>
+<div>
+    <h3>Loading...</h3>
+</div>

@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'new-sub-category', component: NewSubCategoryPageComponent, pathMatch: 'full' },
   { path: 'edit-sub-category/:id', component: EditSubCategoryPageComponent, pathMatch: 'full' },
   { path: 'edit-category/:id', component: EditCategoryPageComponent, pathMatch: 'full' },
+  { path: 'edit-item/:id', component: EditItemPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

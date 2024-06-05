@@ -1,76 +1,8 @@
-<div class="body">
-    <div class="content-box">
-        <h1>New Item</h1>
-        <form class="new-item-form">
-            <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput required>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Description</mat-label>
-                <textarea matInput
-                          cdkTextareaAutosize
-                          #autosize="cdkTextareaAutosize"
-                          cdkAutosizeMinRows="1"
-                          cdkAutosizeMaxRows="5"></textarea>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Category</mat-label>
-                <mat-select required>
-                    @for (categorie of categories; track categorie) {
-                        <mat-option [value]="categorie.id">{{categorie.name}}</mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Sub Category</mat-label>
-                <mat-select required>
-                    @for (subCategorie of subCategories; track subCategorie) {
-                        <mat-option [value]="subCategorie.id">{{subCategorie.name}}</mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Creation date</mat-label>
-                <input matInput [matDatepicker]="creation_date" disabled>
-                <mat-datepicker-toggle matIconSuffix [for]="creation_date"></mat-datepicker-toggle>
-                <mat-datepicker #creation_date></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Estimated Date</mat-label>
-                <input matInput [matDatepicker]="estimated_date">
-                <mat-datepicker-toggle matIconSuffix [for]="estimated_date"></mat-datepicker-toggle>
-                <mat-datepicker #estimated_date></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Due Date</mat-label>
-                <input matInput [matDatepicker]="due_date">
-                <mat-datepicker-toggle matIconSuffix [for]="due_date"></mat-datepicker-toggle>
-                <mat-datepicker #due_date></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Update Date</mat-label>
-                <input matInput [matDatepicker]="update_date" disabled>
-                <mat-datepicker-toggle matIconSuffix [for]="update_date"></mat-datepicker-toggle>
-                <mat-datepicker #update_date></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always">
-                <mat-label>Amount</mat-label>
-                <input matInput type="number" class="example-right-align" placeholder="0" required>
-                <span matTextPrefix>R$&nbsp;</span>
-            </mat-form-field>
-            <div class="button-row">
-                <button mat-raised-button type="submit" color="primary">Register</button>
-                <button mat-raised-button type="button" color="warn">Cancel</button>
-            </div>
-        </form>
-    </div> 
-</div>
+<app-item-data-form
+    buttonText="Save"
+    tittle="New Item"
+    [categories] = "categories"
+    [subCategories] = "subCategories"
+    (onSubmit) = "onSubmit($event)"
+>
+</app-item-data-form>

@@ -39,7 +39,7 @@ export class CategoryDataFormComponent {
         user_id: 0,
         name: formData.name,
         description: formData.description
-      })
+      });
     }else{
       console.log('Error');
     }

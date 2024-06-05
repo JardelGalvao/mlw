@@ -1,0 +1,83 @@
+<div class="body">
+    <div class="content-box">
+        <h1>{{ tittle }}</h1>
+        <form class="new-item-form"  [formGroup]="newItemForm" (ngSubmit)="onButtonClicked()"> 
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput required formControlName="name">
+                <mat-hint *ngIf="newItemForm.controls['name']?.invalid && newItemForm.controls['name']?.touched">
+                    <span class="inputValidationError">Name is required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput
+                          cdkTextareaAutosize
+                          formControlName="description"
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                <select matNativeControl required formControlName="category">
+                    <option *ngFor="let category of categories" [ngValue]=category.id >{{ category.name }}</option>
+                </select>
+                <mat-hint *ngIf="newItemForm.controls['category']?.invalid && newItemForm.controls['category']?.touched">
+                    <span class="inputValidationError">Category is required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Sub Category</mat-label>
+                <select matNativeControl required formControlName="subCategory">
+                    <option *ngFor="let subCategory of filteredSubCategories" [ngValue]=subCategory.id>{{ subCategory.name }}</option>
+                </select>
+                <mat-hint *ngIf="newItemForm.controls['subCategory']?.invalid && newItemForm.controls['subCategory']?.touched">
+                    <span class="inputValidationError">Sub Category is required</span>
+                </mat-hint>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Creation date</mat-label>
+                <input matInput [matDatepicker]="creation_date" formControlName="creationDate">
+                <mat-datepicker-toggle matIconSuffix [for]="creation_date"></mat-datepicker-toggle>
+                <mat-datepicker #creation_date></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Estimated Date</mat-label>
+                <input matInput [matDatepicker]="estimated_date" formControlName="estimatedDate">
+                <mat-datepicker-toggle matIconSuffix [for]="estimated_date"></mat-datepicker-toggle>
+                <mat-datepicker #estimated_date></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="due_date" formControlName="dueDate">
+                <mat-datepicker-toggle matIconSuffix [for]="due_date"></mat-datepicker-toggle>
+                <mat-datepicker #due_date></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Update Date</mat-label>
+                <input matInput [matDatepicker]="update_date"  formControlName="updateDate">
+                <mat-datepicker-toggle matIconSuffix [for]="update_date"></mat-datepicker-toggle>
+                <mat-datepicker #update_date></mat-datepicker>
+            </mat-form-field>
+
+              
+            <mat-form-field floatLabel="always">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" class="example-right-align" placeholder="0" formControlName="amount">
+                <span matTextPrefix>R$&nbsp;</span>
+            </mat-form-field>
+            <div class="button-row">
+                <button mat-raised-button type="submit" color="primary">{{ buttonText }}</button>
+                <button mat-raised-button type="button" color="warn" routerLink="/items">Cancel</button>
+            </div>
+        </form>
+    </div> 
+</div>

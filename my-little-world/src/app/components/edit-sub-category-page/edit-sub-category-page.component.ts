@@ -18,19 +18,19 @@ export class EditSubCategoryPageComponent {
     private router: Router,
   ){}
 
-  onSubmit({name, description, category_id} : {name:string, description: string, category_id: number}):void{
-    this.mlwService.updateSubCategory(this.subCategory.id, name, description, category_id)
-      .subscribe(() => {
-        this.router.navigateByUrl('/sub-categories')
-      });
-  }
-
   ngOnInit(): void {
     this.mlwService.getAllCategories()
       .subscribe(categories => this.categories = categories);
     const id = this.route.snapshot.paramMap.get('id');
     this.mlwService.getSubCategory(id!)
       .subscribe(subCategory => this.subCategory = subCategory);
+  }
+
+  onSubmit({name, description, category_id} : {name:string, description: string, category_id: number}):void{
+    this.mlwService.updateSubCategory(this.subCategory.id, name, description, category_id)
+      .subscribe(() => {
+        this.router.navigateByUrl('/sub-categories');
+      });
   }
 
 }

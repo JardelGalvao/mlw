@@ -5,14 +5,13 @@ export const getCategoryRoute = {
     method: 'GET',
     path: '/api/categories/{id}',
     handler: async (req, h) => {
-        try {
+        try{
             const id = req.params.id;
-            const { results } = await db.query(
+            const  result = await db.query(
                 `SELECT * FROM CATEGORIES WHERE ID = ?`,
                 [id]
             )
-
-            return results
+            return result.results[0];  
         }
         catch(e){
             throw Boom.badImplementation('Error geting category');

@@ -11,13 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ItemsPageComponent {
   items: Items[] = [];
-  displayedColumns: string[] = ['Name', 'Categorie', 'Sub Categorie', 'Creation Date', 'Estimated Date', 'Due Date', 'Value'];
+  displayedColumns: string[] = ['Name', 'Categorie', 'Sub Categorie', 'Creation Date', 'Estimated Date', 'Due Date', 'Value', 'Actions'];
   categories:  Categories[] = [];
   subCategories: SubCategories[] = [];
   
   constructor(
     private mlwService: mlwService,
-    private route: ActivatedRoute,
   ){}
   
   ngOnInit(): void {
@@ -28,6 +27,24 @@ export class ItemsPageComponent {
     this.mlwService.getAllSubCategories()
       .subscribe(subCategories => this.subCategories = subCategories);
   }
+  
+  getSubCategoryName(id: number): string | undefined{
+    const subCategory = this.subCategories.find(subCategory => subCategory.id === id);
+    return subCategory?.name
+  }
 
+  getCategoryName(id: number): string | undefined{
+    const category = this.categories.find(category => category.id === id);
+    return category?.name
+  }
+
+  deleteItem(id: number): void{
+    this.mlwService.deleteItem(id)
+      .subscribe(() => {
+        this.items = this.items.filter(
+          items => items.id !== id,
+        );
+      });
+  }
 
 }

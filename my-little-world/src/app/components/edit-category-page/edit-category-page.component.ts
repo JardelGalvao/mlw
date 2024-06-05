@@ -1,7 +1,8 @@
 import { Component, Input, Output } from '@angular/core';
-import { Categories } from '../../types';
-import { ActivatedRoute } from '@angular/router';
+import { Categories, SubCategories } from '../../types';
+import { ActivatedRoute, Router } from '@angular/router';
 import { mlwService } from '../../services/mlw.service';
+
 
 @Component({
   selector: 'app-edit-category-page',
@@ -9,25 +10,25 @@ import { mlwService } from '../../services/mlw.service';
   styleUrl: './edit-category-page.component.css'
 })
 export class EditCategoryPageComponent {
-  @Input() currentName!: string;
-  @Input() currentDescription!: string;
-
   category!: Categories;
 
   constructor(
     private mlwService: mlwService,
     private route: ActivatedRoute,
+    private router: Router,
   ){}
 
   ngOnInit(): void{
-    const id = this.route.snapshot.paramMap.get('id');
-    this.mlwService.getCategory(id!)
+    const categoryId = this.route.snapshot.paramMap.get('id');
+    this.mlwService.getCategory(categoryId!)
       .subscribe(category => this.category = category);
-    console.log(this.category)
   }
 
-  onSubmit(a: Categories): void{
-    
-    console.log('Submitou')
+  onSubmit({name, description} : {name:string, description: string}): void{
+    this.mlwService.updateCategory(this.category.id, name, description)
+      .subscribe(() =>{
+        this.router.navigateByUrl('/categories');
+      })
+
   }
 }

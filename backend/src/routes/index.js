@@ -9,7 +9,11 @@ import { getCategoryRoute } from "./getCategory";
 import { createSubCategoryRoute } from "./createSubCategory";
 import { deleteSubCategoryRoute } from "./deleteSubCategory";
 import { getSubCategoryRoute } from "./getSubCategory"; 
-import { updateSubCategoryRouter } from "./updateSubCategory";
+import { updateSubCategoryRoute } from "./updateSubCategory";
+import { updateCategoryRoute } from "./updateCategory";
+import { createItemRoute } from "./createItem";
+import { deleteItemRoute } from "./deleteItem";
+import { getItemRoute } from "./getItem";
 
 export default [
     getAllItemsRoute,
@@ -23,5 +27,9 @@ export default [
     createSubCategoryRoute,
     deleteSubCategoryRoute,
     getSubCategoryRoute,
-    updateSubCategoryRouter,
+    updateSubCategoryRoute,
+    updateCategoryRoute,
+    createItemRoute,
+    deleteItemRoute,
+    getItemRoute
 ];

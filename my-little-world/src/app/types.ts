@@ -29,9 +29,9 @@ export interface Items {
     sub_category_id: number,
     name: string,
     description: string,
-    creation_date: Date,
-    estimated_date: Date,
-    update_date: Date,
-    due_date: Date,
+    creation_date: string,
+    estimated_date: string,
+    update_date: string,
+    due_date: string,
     value: number
 }

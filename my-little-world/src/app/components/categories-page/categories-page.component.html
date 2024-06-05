@@ -3,19 +3,19 @@
     <table mat-table [dataSource]="categories" class="table-categories">
         <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef class="header-cell"> Name </th>
-          <td mat-cell *matCellDef="let categorie"> {{categorie.name}} </td>
+          <td mat-cell *matCellDef="let category"> {{category.name}} </td>
         </ng-container>
       
         <ng-container matColumnDef="Description">
           <th mat-header-cell *matHeaderCellDef class="header-cell"> Description </th>
-          <td mat-cell *matCellDef="let categorie"> {{categorie.description}}</td>
+          <td mat-cell *matCellDef="let category"> {{category.description}}</td>
         </ng-container>
-
+        
         <ng-container matColumnDef="Actions" >
           <th mat-header-cell *matHeaderCellDef class="header-cell actions-header"> Actions </th>
-          <td mat-cell *matCellDef="let categorie" class="action-buttons-row">
-            <button mat-raised-button type="submit"  color="primary" class="action-button" routerLink="/edit-category/{{categorie.id}}">Edit</button>
-            <button mat-raised-button type="button" color="warn" class="action-button" (click)="deleteCategorie(categorie.id)">Delete</button>
+          <td mat-cell *matCellDef="let category" class="action-buttons-row">
+            <button mat-raised-button type="submit"  color="primary" class="action-button" routerLink="/edit-category/{{category.id}}">Edit</button>
+            <button mat-raised-button type="button" color="warn" class="action-button" (click)="deleteCategory(category.id)" [disabled]="isCategoryInSubCategories(category.id)">Delete</button>
           </td>
         </ng-container>
       

@@ -6,13 +6,14 @@ export const createCategoryRoute = {
     path: '/api/categories',
     handler: async (req, h) => {
         try {
-            const userId = req.params.userId;
+            // const userId = req.params.userId;
+            const userId = '0f454874-a47e-466a-abdf-8b13f4f71b95'
             const { name = '', description = ''} = req.payload;
             db.query(
                 `
                 INSERT INTO CATEGORIES (user_id, name, description ) VALUES (?, ?, ?)
                 `
-                ,[1, name, description]
+                ,[userId, name, description]
             );
             return { userId, name, description};
         }catch (e) {

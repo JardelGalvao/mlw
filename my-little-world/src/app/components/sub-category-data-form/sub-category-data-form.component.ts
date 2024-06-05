@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Categories, SubCategories} from '../../types';
+import { Categories, Items, SubCategories} from '../../types';
 
 @Component({
   selector: 'app-sub-category-data-form',
@@ -16,6 +16,7 @@ export class SubCategoryDataFormComponent {
 
   categories: Categories[] = [];
   newSubCategoryForm!: FormGroup;
+  items!: Items[];
   
   @Output() onSubmit = new EventEmitter<SubCategories>();
   

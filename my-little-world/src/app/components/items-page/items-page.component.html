@@ -1,23 +1,5 @@
 <div class="body">
-  <div class="filerts">
-    <mat-form-field>
-      <mat-label>Categorie</mat-label>
-      <mat-select class="header-cell">
-        @for (categorie of categories; track categorie) {
-          <mat-option [value]="categorie.id">{{categorie.name}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field >
-      <mat-label>Sub Categories</mat-label>
-      <mat-select class="header-cell">
-        @for (subCategorie of subCategories ; track subCategorie) {
-          <mat-option [value]="subCategorie.id">{{subCategorie.name}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </div>
+  <h1>ITEMS</h1>
   <table mat-table [dataSource]="items" class="table-items">
       <ng-container matColumnDef="Name">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Name </th>
@@ -26,37 +8,48 @@
     
       <ng-container matColumnDef="Categorie">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Categorie </th>
-        <td mat-cell *matCellDef="let item"> {{item.categorie_id}} </td>
+        <td mat-cell *matCellDef="let item"> {{getCategoryName(item.category_id)}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Sub Categorie">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Sub Categorie </th>
-        <td mat-cell *matCellDef="let item"> {{item.sub_categorie_id}} </td>
+        <td mat-cell *matCellDef="let item"> {{getSubCategoryName(item.sub_category_id)}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Creation Date">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Creation Date </th>
-        <td mat-cell *matCellDef="let item"> {{item.creation_date}} </td>
+        <td mat-cell *matCellDef="let item"> {{item.creation_date | date:'dd-MM-yyyy HH:mm:ss'}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Estimated Date">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Estimated Date </th>
-        <td mat-cell *matCellDef="let item"> {{item.estimated_date}} </td>
+        <td mat-cell *matCellDef="let item"> {{item.estimated_date | date:'dd-MM-yyyy HH:mm:ss'}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Due Date">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Due Date </th>
-        <td mat-cell *matCellDef="let item"> {{item.due_date}} </td>
+        <td mat-cell *matCellDef="let item"> {{item.due_date | date:'dd-MM-yyyy HH:mm:ss'}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Value">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Value </th>
         <td mat-cell *matCellDef="let item"> {{item.value}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="Actions" >
+        <th mat-header-cell *matHeaderCellDef class="header-cell actions-header"> Actions </th>
+        <td mat-cell *matCellDef="let item" class="action-buttons-row">
+          <button mat-raised-button type="submit"  color="primary" class="action-button" routerLink="/edit-item/{{item.id}}">Edit</button>
+          <button mat-raised-button type="button" color="warn" class="action-button" (click)="deleteItem(item.id)">Delete</button>
+        </td>
+      </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <a routerLink="/new-item" class="anchor-button-add">
+    <button mat-raised-button color="primary" class="button-add"> Add Item </button>
+</a>
 </div>
 
 

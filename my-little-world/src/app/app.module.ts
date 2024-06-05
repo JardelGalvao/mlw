@@ -37,6 +37,11 @@ import { SubCategoryDataFormComponent } from './components/sub-category-data-for
 import { EditSubCategoryPageComponent } from './components/edit-sub-category-page/edit-sub-category-page.component';
 import { CategoryDataFormComponent } from './components/category-data-form/category-data-form.component';
 import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
+import { ItemDataFormComponent } from './components/item-data-form/item-data-form.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
+
 
 
 @NgModule({
@@ -55,7 +60,8 @@ import { EditCategoryPageComponent } from './components/edit-category-page/edit-
     SubCategoryDataFormComponent,
     EditSubCategoryPageComponent,
     CategoryDataFormComponent,
-    EditCategoryPageComponent
+    EditCategoryPageComponent,
+    ItemDataFormComponent
   ],
   imports: [
     BrowserModule,
@@ -73,10 +79,11 @@ import { EditCategoryPageComponent } from './components/edit-category-page/edit-
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })
