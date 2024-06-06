@@ -1,5 +1,5 @@
-import { Component, Input, Output } from '@angular/core';
-import { Categories, SubCategories } from '../../types';
+import { Component} from '@angular/core';
+import { Categories } from '../../types';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mlwService } from '../../services/mlw.service';
 

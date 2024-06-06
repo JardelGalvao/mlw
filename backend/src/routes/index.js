@@ -14,6 +14,7 @@ import { updateCategoryRoute } from "./updateCategory";
 import { createItemRoute } from "./createItem";
 import { deleteItemRoute } from "./deleteItem";
 import { getItemRoute } from "./getItem";
+import { updateItemRoute } from "./updateItem";
 
 export default [
     getAllItemsRoute,
@@ -31,5 +32,6 @@ export default [
     updateCategoryRoute,
     createItemRoute,
     deleteItemRoute,
-    getItemRoute
+    getItemRoute,
+    updateItemRoute
 ];

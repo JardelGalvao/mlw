@@ -18,17 +18,17 @@
     
       <ng-container matColumnDef="Creation Date">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Creation Date </th>
-        <td mat-cell *matCellDef="let item"> {{item.creation_date | date:'dd-MM-yyyy HH:mm:ss'}} </td>
+        <td mat-cell *matCellDef="let item"> {{item.creation_date | date:'dd-MM-yyyy'}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Estimated Date">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Estimated Date </th>
-        <td mat-cell *matCellDef="let item"> {{item.estimated_date | date:'dd-MM-yyyy HH:mm:ss'}} </td>
+        <td mat-cell *matCellDef="let item"> {{item.estimated_date | date:'dd-MM-yyyy'}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Due Date">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Due Date </th>
-        <td mat-cell *matCellDef="let item"> {{item.due_date | date:'dd-MM-yyyy HH:mm:ss'}} </td>
+        <td mat-cell *matCellDef="let item"> {{item.due_date | date:'dd-MM-yyyy'}} </td>
       </ng-container>
     
       <ng-container matColumnDef="Value">
