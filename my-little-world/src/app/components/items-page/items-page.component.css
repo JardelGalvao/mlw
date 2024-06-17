@@ -32,9 +32,18 @@ th, td{
 .button-add{
     margin-top: 20px;
     height: 50px;
-    background: var(--clr-primary);
     width: 100%;
     font-weight: 500;
+}
+
+.button-add:hover{
+    background: var(--clr-primary);
+    color: var(--clr-secondary);
+}
+
+.action-button:hover{
+    background: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .action-buttons-row{
@@ -49,14 +58,10 @@ th, td{
 .action-button{
     height: 50px;
     width: 15px;
-    background: var(--clr-primary);
     font-weight: 500;
 }
 
-button:hover{
-    background-color: var(--clr-primary);
-    color: var(--clr-secondary);
-}
+
 
 .actions-header{
     width:200px;

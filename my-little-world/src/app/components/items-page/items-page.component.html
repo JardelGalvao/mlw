@@ -1,5 +1,27 @@
 <div class="body">
   <h1>ITEMS</h1>
+  <form class="new-item-form"  [formGroup]="formFilter" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>categories</mat-label>
+          <select matNativeControl required formControlName="category">
+            <option value="0">All</option>
+            <option *ngFor="let category of categories" [ngValue]=category.id >{{ category.name }}</option>
+          </select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>sub-categories</mat-label>
+      <select matNativeControl required formControlName="subCategory">
+        <option value="0">All</option>
+        <option *ngFor="let subCategory of filteredSubCategories" [ngValue]=subCategory.id >{{ subCategory.name }}</option>
+      </select>
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-raised-button type="submit" color="primary">Filter</button>
+  </div>
+  </form>
+
   <table mat-table [dataSource]="items" class="table-items">
       <ng-container matColumnDef="Name">
         <th mat-header-cell *matHeaderCellDef class="header-cell"> Name </th>

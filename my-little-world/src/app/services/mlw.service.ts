@@ -31,6 +31,10 @@ export class mlwService {
     return this.http.get<Items>(`/api/items/${id}`);
   }
 
+  getItemFiltered(category_id: number, sub_category_id: number): Observable<Items[]>{
+    return this.http.get<Items[]>(`/api/items/category=${category_id}/subCategory=${sub_category_id}`);
+  }
+
   updateItem(id: number, name: string, description: string,  category_id: number, sub_category_id: number, estimated_date: string, update_date: string, due_date: string, value: number): Observable<Items>{
     return this.http.post<Items>(
       `/api/items/${id}`,

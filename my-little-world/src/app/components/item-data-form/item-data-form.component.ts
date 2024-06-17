@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, Output } from '@angular/core';
 import { Categories, Items, SubCategories } from '../../types';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -30,7 +30,6 @@ export class ItemDataFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef,
   ){
     this.newItemForm = this.fb.group({
       name: new FormControl('', [Validators.required]),

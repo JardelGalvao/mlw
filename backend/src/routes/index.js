@@ -15,8 +15,10 @@ import { createItemRoute } from "./createItem";
 import { deleteItemRoute } from "./deleteItem";
 import { getItemRoute } from "./getItem";
 import { updateItemRoute } from "./updateItem";
+import { getItemsFilteredRoute } from "./getItemsFiltered";
 
 export default [
+    getItemsFilteredRoute,
     getAllItemsRoute,
     getAllCategoriesRoute,
     getAllSubCategoriesRoute,
@@ -33,5 +35,6 @@ export default [
     createItemRoute,
     deleteItemRoute,
     getItemRoute,
-    updateItemRoute
+    updateItemRoute,
+    
 ];
