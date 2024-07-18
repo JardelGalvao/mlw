@@ -3,6 +3,7 @@ import { Items, Categories, SubCategories} from '../types';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type' : 'application/json',
@@ -18,7 +19,7 @@ export class mlwService {
     private http: HttpClient,
   ){}
 
-  createItem(name: string, description: string, category_id: number, sub_category_id: number, creation_date: string, estimated_date: string, due_date: string, update_date: string, value: number): Observable<Items>{
+  createItem(name: string, description: string, category_id: number, sub_category_id: number, creation_date: string, estimated_date: string | null, due_date: string | null, update_date: string, value: number): Observable<Items>{
     return this.http.post<Items>('/api/items', 
     {name, description, category_id, sub_category_id, creation_date, estimated_date, due_date, update_date, value});
   }
@@ -31,8 +32,8 @@ export class mlwService {
     return this.http.get<Items>(`/api/items/${id}`);
   }
 
-  getItemFiltered(category_id: number, sub_category_id: number): Observable<Items[]>{
-    return this.http.get<Items[]>(`/api/items/category=${category_id}/subCategory=${sub_category_id}`);
+  getItemFiltered(category_id: number, sub_category_id: number, startDate: string, endDate: string): Observable<Items[]>{
+    return this.http.get<Items[]>(`/api/items/category=${category_id}/subCategory=${sub_category_id}/startDate=${startDate}/endDate=${endDate}`);
   }
 
   updateItem(id: number, name: string, description: string,  category_id: number, sub_category_id: number, estimated_date: string, update_date: string, due_date: string, value: number): Observable<Items>{

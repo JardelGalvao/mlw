@@ -64,3 +64,26 @@ th, td{
 .actions-header{
     width:200px;
 }
+
+form.form-filter{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    width: 90%;
+    height:80px;
+}
+
+form.form-filter mat-form-field{
+    height: 100%;
+}
+
+form.form-filter button{
+    height: 60px;
+}
+
+form.form-filter button:hover{
+    background: var(--clr-primary);
+    color: var(--clr-secondary);
+}
+

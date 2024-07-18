@@ -11,6 +11,7 @@ import { SubCategoriesPageComponent } from './components/sub-categories-page/sub
 import { NewSubCategoryPageComponent } from './components/new-sub-category-page/new-sub-category-page.component';
 import { EditSubCategoryPageComponent } from './components/edit-sub-category-page/edit-sub-category-page.component';
 import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/items', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'edit-sub-category/:id', component: EditSubCategoryPageComponent, pathMatch: 'full' },
   { path: 'edit-category/:id', component: EditCategoryPageComponent, pathMatch: 'full' },
   { path: 'edit-item/:id', component: EditItemPageComponent, pathMatch: 'full' },
+  { path: 'teste', component: TestComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

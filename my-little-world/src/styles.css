@@ -21,9 +21,5 @@ body {
     padding: 0;
 }
 
-div.cdk-overlay-container mat-calendar{
-    background: red;
-    width: 350px;
-    height: 150px;
-    z-index: 999999999999999999999999999999999;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

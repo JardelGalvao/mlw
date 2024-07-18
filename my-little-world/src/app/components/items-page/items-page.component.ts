@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { mlwService } from '../../services/mlw.service';
 import { Items, Categories, SubCategories } from '../../types';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-
-
-
+import { FormBuilder, FormGroup, FormControl, Validators  } from '@angular/forms';
+import { format } from 'date-fns';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-items-page',
@@ -17,7 +16,7 @@ export class ItemsPageComponent {
   categories:  Categories[] = [];
   subCategories: SubCategories[] = [];
   filteredSubCategories!: SubCategories[];
-
+  total!: number;
   formFilter!:  FormGroup;
   
   constructor(
@@ -27,20 +26,39 @@ export class ItemsPageComponent {
     this.formFilter = this.fb.group({
       category: new FormControl(''),
       subCategory: new FormControl(''),
+      startDate: [''],
+      endDate: ['']
     })
+
+    
+  this.formFilter.get('startDate')?.valueChanges.subscribe(startDate =>{
+    const endDateControl = this.formFilter.get('endDate');
+    if (startDate) {
+      endDateControl?.setValidators([Validators.required]);
+    } else {
+      endDateControl?.clearValidators();
+    }
+    endDateControl?.updateValueAndValidity();
+  })
+  
   }
 
   ngOnInit(): void {
     this.mlwService.getItems()
-      .subscribe(items => this.items = items);
+      .pipe(
+        tap(items => this.items = items),
+        map(items => items.reduce((sum, item) => sum + item.value, 0))
+      )
+      .subscribe(total => this.total = total);
+      
     this.mlwService.getAllCategories()
       .subscribe(categories => this.categories = categories);
     this.mlwService.getAllSubCategories()
       .subscribe(subCategories => this.subCategories = subCategories);
-    
     this.formFilter.get('category')?.valueChanges.subscribe(selectedCategoryId => {
         this.filteredSubCategories = this.subCategories.filter(subCategory => subCategory.category_id === selectedCategoryId);
     });
+    
   }
   
   getSubCategoryName(id: number): string | undefined{
@@ -64,12 +82,14 @@ export class ItemsPageComponent {
 
   onSubmit(): void{
     if(this.formFilter.valid){
-      const formData = this.formFilter.value
-      this.mlwService.getItemFiltered(formData.category, formData.subCategory)
+      const formData = this.formFilter.value;
+      const startDateFormated = formData.startDate ? format(formData.startDate, 'yyyy-MM-dd') : '0';
+      const endDateFormated = formData.endDate ? format(formData.endDate, 'yyyy-MM-dd') : '0';
+
+      this.mlwService.getItemFiltered(formData.category, formData.subCategory, startDateFormated, endDateFormated)
         .subscribe( items => this.items = items )
-    }
-    else{
-      console.log('err')
+
+      this.total = this.items.reduce((sum: number, item: Items) => sum + item.value, 0)
     }
   }
 

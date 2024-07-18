@@ -1,6 +1,7 @@
 <div class="body">
   <h1>ITEMS</h1>
-  <form class="new-item-form"  [formGroup]="formFilter" (ngSubmit)="onSubmit()">
+  <form class="form-filter"  [formGroup]="formFilter" (ngSubmit)="onSubmit()">
+
     <mat-form-field>
       <mat-label>categories</mat-label>
           <select matNativeControl required formControlName="category">
@@ -17,73 +18,80 @@
       </select>
     </mat-form-field>
 
-    <div class="button-row">
-      <button mat-raised-button type="submit" color="primary">Filter</button>
-    </div>
-
+    
     <mat-form-field>
-      <mat-label>Enter a date range</mat-label>
+      <mat-label>Creation date</mat-label>
       <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
+        <input matStartDate placeholder="Start date" formControlName="startDate">
+        <input matEndDate placeholder="End date" formControlName="endDate">
       </mat-date-range-input>
-      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
 
-    </form>
+    <button mat-raised-button type="submit" color="primary">Filter</button>
+  </form>
 
-    <table mat-table [dataSource]="items" class="table-items">
-        <ng-container matColumnDef="Name">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Name </th>
-          <td mat-cell *matCellDef="let item"> {{item.name}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Categorie">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Categorie </th>
-          <td mat-cell *matCellDef="let item"> {{getCategoryName(item.category_id)}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Sub Categorie">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Sub Categorie </th>
-          <td mat-cell *matCellDef="let item"> {{getSubCategoryName(item.sub_category_id)}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Creation Date">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Creation Date </th>
-          <td mat-cell *matCellDef="let item"> {{item.creation_date | date:'dd-MM-yyyy'}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Estimated Date">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Estimated Date </th>
-          <td mat-cell *matCellDef="let item"> {{item.estimated_date | date:'dd-MM-yyyy'}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Due Date">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Due Date </th>
-          <td mat-cell *matCellDef="let item"> {{item.due_date | date:'dd-MM-yyyy'}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="Value">
-          <th mat-header-cell *matHeaderCellDef class="header-cell"> Value </th>
-          <td mat-cell *matCellDef="let item"> {{item.value | currency}} </td>
-        </ng-container>
 
-        <ng-container matColumnDef="Actions" >
-          <th mat-header-cell *matHeaderCellDef class="header-cell actions-header"> Actions </th>
-          <td mat-cell *matCellDef="let item" class="action-buttons-row">
-            <button mat-raised-button type="submit"  color="primary" class="action-button" routerLink="/edit-item/{{item.id}}">Edit</button>
-            <button mat-raised-button type="button" color="warn" class="action-button" (click)="deleteItem(item.id)">Delete</button>
-          </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <a routerLink="/new-item" class="anchor-button-add">
-      <button mat-raised-button color="primary" class="button-add"> Add Item </button>
-    </a>
+  <table mat-table [dataSource]="items" class="table-items">
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Name </th>
+        <td mat-cell *matCellDef="let item"> {{item.name}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Categorie">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Categorie </th>
+        <td mat-cell *matCellDef="let item"> {{getCategoryName(item.category_id)}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Sub Categorie">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Sub Categorie </th>
+        <td mat-cell *matCellDef="let item"> {{getSubCategoryName(item.sub_category_id)}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Creation Date">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Creation Date </th>
+        <td mat-cell *matCellDef="let item"> {{item.creation_date | date:'dd-MM-yyyy'}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Estimated Date">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Estimated Date </th>
+        <td mat-cell *matCellDef="let item"> {{item.estimated_date | date:'dd-MM-yyyy'}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Due Date">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Due Date </th>
+        <td mat-cell *matCellDef="let item"> {{item.due_date | date:'dd-MM-yyyy'}} </td>
+        <td mat-footer-cell *matFooterCellDef> Total </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Value">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Value </th>
+        <td mat-cell *matCellDef="let item"> {{item.value | currency}} </td>
+        <td mat-footer-cell *matFooterCellDef> {{total | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Actions" >
+        <th mat-header-cell *matHeaderCellDef class="header-cell actions-header"> Actions </th>
+        <td mat-cell *matCellDef="let item" class="action-buttons-row">
+          <button mat-raised-button type="submit"  color="primary" class="action-button" routerLink="/edit-item/{{item.id}}">Edit</button>
+          <button mat-raised-button type="button" color="warn" class="action-button" (click)="deleteItem(item.id)">Delete</button>
+        </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+  <a routerLink="/new-item" class="anchor-button-add">
+    <button mat-raised-button color="primary" class="button-add"> Add Item </button>
+  </a>
 </div>
 
 

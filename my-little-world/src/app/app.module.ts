@@ -39,6 +39,7 @@ import { CategoryDataFormComponent } from './components/category-data-form/categ
 import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
 import { ItemDataFormComponent } from './components/item-data-form/item-data-form.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TestComponent } from './components/test/test.component';
 
 
 
@@ -61,7 +62,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     EditSubCategoryPageComponent,
     CategoryDataFormComponent,
     EditCategoryPageComponent,
-    ItemDataFormComponent
+    ItemDataFormComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
